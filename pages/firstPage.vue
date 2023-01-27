@@ -1,4 +1,14 @@
 <template lang='pug'>
-.container 
-    | PAGE 1
+.mt-5
+    TableResize(:data="api")
 </template>
+
+
+<script setup>
+const { $getFirstTable } = useNuxtApp()
+
+
+const { data } = await $getFirstTable()
+
+const api = data.value.data
+</script>

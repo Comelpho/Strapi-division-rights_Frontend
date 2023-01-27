@@ -12,7 +12,7 @@ export default defineNuxtPlugin(async () => {
             async onResponse ({ request, response, options }) {
                 console.log("Ответ от сервера", response);
 
-                if(response._data && response._data.jwt ){
+                if (response._data && response._data.jwt) {
                     acceptToken.value = response._data.jwt
                     authChangeLayout.value = "default";
                 }
@@ -28,8 +28,8 @@ export default defineNuxtPlugin(async () => {
         console.log("errr: ", err);
     }
 
-    async function login (query: any) {
-        
+    async function login (query) {
+
         return await useAsyncData("login", () => apiFetch(`/api/auth/local`, {
             method: "POST",
 
@@ -43,10 +43,10 @@ export default defineNuxtPlugin(async () => {
 
 
     async function getFirstTable () {
-        
+
         return await useAsyncData("firstTable", () => apiFetch(`/api/first-tables`, {
             method: "GET",
-            headers:{
+            headers: {
                 "Authorization": `Bearer ${acceptToken.value}`,
             },
             cache: "no-cache",
@@ -56,10 +56,10 @@ export default defineNuxtPlugin(async () => {
     }
 
     async function getSecondTable () {
-        
+
         return await useAsyncData("secondTable", () => apiFetch(`/api/second-tables`, {
             method: "GET",
-            headers:{
+            headers: {
                 "Authorization": `Bearer ${acceptToken.value}`,
             },
             cache: "no-cache",
@@ -70,10 +70,10 @@ export default defineNuxtPlugin(async () => {
 
 
     async function getThirdTable () {
-        
+
         return await useAsyncData("thirdTable", () => apiFetch(`/api/third-tables`, {
             method: "GET",
-            headers:{
+            headers: {
                 "Authorization": `Bearer ${acceptToken.value}`,
             },
             cache: "no-cache",
@@ -82,20 +82,20 @@ export default defineNuxtPlugin(async () => {
         );
     }
 
-    async function getMenu() {
-        
-        
+    async function getMenu () {
+
+
         return await useAsyncData("menu", () => apiFetch(`/api/menus`, {
             method: "GET",
-            headers:{
+            headers: {
                 "Authorization": `Bearer ${acceptToken.value}`,
             },
             cache: "no-cache",
-        }),
 
+        })
         );
     }
-    
+
 
     return {
         provide: {

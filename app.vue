@@ -12,5 +12,4 @@ NuxtLayout(:name="authChangeLayout")
 const authChangeLayout = useState('authChangeLayout')
 const loader = useState('loader')
 
-console.log(authChangeLayout.value)
 </script>

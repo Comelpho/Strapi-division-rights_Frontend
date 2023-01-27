@@ -1,4 +1,13 @@
 <template lang='pug'>
-.container 
-    | PAGE 3
+.mt-5
+    TableResize(:data="api")
 </template>
+
+<script setup>
+const { $getThirdTable } = useNuxtApp()
+
+
+const { data } = await $getThirdTable()
+
+const api = data.value.data
+</script>

@@ -1,5 +1,5 @@
 <template lang='pug'>
-nav.navbar.navbar-expand-lg.navbar-light.bg-light
+nav(v-if="data").navbar.navbar-expand-lg.navbar-light.bg-light
     .container-fluid
         NuxtLink.navbar-brand(to='/') Меню
         button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarText', aria-controls='navbarText', aria-expanded='false', aria-label='Toggle navigation')
@@ -15,12 +15,27 @@ NuxtPage
 <script setup>
 
 const { $getMenu } = useNuxtApp()
+const loader = useState('loader')
 
 
 const { data } = await $getMenu()
 
 const menu = data.value.data
 
-console.log(menu);
+
+watchEffect(() => {
+    console.log(loader.value);
+
+})
+
+
+
+
+
+
+
+
+
+
 
 </script>
